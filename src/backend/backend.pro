@@ -12,11 +12,15 @@ win32: DEFINES += _USE_MATH_DEFINES
 
 HEADERS += \
     command.h \
+    commandmanager.h \
+    commandrepository.h \
     corecommand.h \
     stack.h
 
 SOURCES += \
     command.cpp \
+    commandmanager.cpp \
+    commandrepository.cpp \
     corecommand.cpp \
     stack.cpp
 

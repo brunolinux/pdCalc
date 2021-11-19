@@ -1,10 +1,13 @@
 #include <QtTest>
-#include "../utilitiesTest/publisherobservertest.h"
-#include "../backendTest/stacktest.h"
-#include "../backendTest/corecommandstest.h"
 #include <iostream>
 #include <QStringList>
 #include <unordered_map>
+
+#include "../utilitiesTest/publisherobservertest.h"
+#include "../backendTest/stacktest.h"
+#include "../backendTest/corecommandstest.h"
+#include "../backendTest/commandrepositorytest.h"
+#include "../backendTest/commandmanagertest.h"
 
 using std::cout;
 using std::endl;
@@ -30,6 +33,11 @@ int main(int argc, char* argv[])
     CoreCommandsTest cct;
     passFail["CoreCommandsTest"] = QTest::qExec(&cct, args);
 
+    CommandRepositoryTest crt;
+    passFail["CommandRepositoryTest"] = QTest::qExec(&crt, args);
+
+    CommandManagerTest cmt;
+    passFail["CommandManagerTest"] = QTest::qExec(&cmt, args);
 
     cout << endl;
     int errors = 0;
