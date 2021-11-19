@@ -11,9 +11,13 @@ win32: DESTDIR = $$HOME/bin
 win32: DEFINES += _USE_MATH_DEFINES
 
 HEADERS += \
+    command.h \
+    corecommand.h \
     stack.h
 
 SOURCES += \
+    command.cpp \
+    corecommand.cpp \
     stack.cpp
 
 unix:LIBS += -ldl

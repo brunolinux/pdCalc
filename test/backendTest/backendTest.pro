@@ -11,9 +11,11 @@ unix:DEFINES += PLUGIN_TEST_FILE=\\\"plugins.unix.pdp\\\"
 win32:DEFINES += PLUGIN_TEST_FILE=\\\"plugin.win.pdp\\\"
 
 HEADERS += \
+    corecommandstest.h \
     stacktest.h
 
 SOURCES += \
+    corecommandstest.cpp \
     stacktest.cpp
 
 

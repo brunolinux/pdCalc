@@ -1,7 +1,7 @@
 #include <QtTest>
 #include "../utilitiesTest/publisherobservertest.h"
 #include "../backendTest/stacktest.h"
-
+#include "../backendTest/corecommandstest.h"
 #include <iostream>
 #include <QStringList>
 #include <unordered_map>
@@ -26,6 +26,10 @@ int main(int argc, char* argv[])
 
     StackTest st;
     passFail["StackTest"] = QTest::qExec(&st, args);
+
+    CoreCommandsTest cct;
+    passFail["CoreCommandsTest"] = QTest::qExec(&cct, args);
+
 
     cout << endl;
     int errors = 0;
