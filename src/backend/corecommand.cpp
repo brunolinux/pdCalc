@@ -1,11 +1,17 @@
 #include "corecommand.h"
 #include "stack.h"
+#include "commandrepository.h"
 #include "utilities/exception.h"
+#include "utilities/userinterface.h"
 #include <stack>
 #include <cmath>
 #include <assert.h>
 
+using std::string;
+
 namespace pdCalc {
+
+namespace  {
 double eps = 1e-12;
 
 bool topOfStackisBetween(double lb, double ub)
@@ -41,6 +47,17 @@ bool passesPowerTest(double y, double x)
 
     return pass;
 }
+
+void registerCommand(UserInterface& ui, const string& label, CommandPtr c)
+{
+    try {
+        CommandRepository::Instance().registerCommand(label, std::move(c));
+    }  catch (Exception& e) {
+        ui.postMessage(e.what());
+    }
+}
+}
+
 
 
 EnterNumber::EnterNumber(double d)
@@ -560,6 +577,32 @@ Duplicate* Duplicate::cloneImpl() const
 const char* Duplicate::helpMessageImpl() const noexcept
 {
     return "Duplicates the top number on the stack";
+}
+
+void RegisterCoreCommands(UserInterface& ui)
+{
+    registerCommand(ui, "swap", MakeCommandPtr<SwapTopOfStack>());
+    registerCommand( ui, "drop", MakeCommandPtr<DropTopOfStack>() );
+    registerCommand( ui, "clear", MakeCommandPtr<ClearStack>() );
+    registerCommand( ui, "+", MakeCommandPtr<Add>() );
+    registerCommand( ui, "-", MakeCommandPtr<Subtract>() );
+    registerCommand
+    (
+        ui, "*",
+        MakeCommandPtr<BinaryCommandAlternative>("Replace first two elements on the stack with their product",
+        [](double d, double f){ return d * f; })
+    );
+    registerCommand( ui, "/", MakeCommandPtr<Divide>() );
+    registerCommand( ui, "pow", MakeCommandPtr<Power>() );
+    registerCommand( ui, "root", MakeCommandPtr<Root>() );
+    registerCommand( ui, "sin", MakeCommandPtr<Sine>() );
+    registerCommand( ui, "cos", MakeCommandPtr<Cosine>() );
+    registerCommand( ui, "tan", MakeCommandPtr<Tangent>() );
+    registerCommand( ui, "arcsin", MakeCommandPtr<Arcsine>() );
+    registerCommand( ui, "arccos", MakeCommandPtr<Arccosine>() );
+    registerCommand( ui, "arctan", MakeCommandPtr<Arctangent>() );
+    registerCommand( ui, "neg", MakeCommandPtr<Negate>() );
+    registerCommand( ui, "dup", MakeCommandPtr<Duplicate>() );
 }
 
 }

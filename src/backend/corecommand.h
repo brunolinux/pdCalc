@@ -425,6 +425,9 @@ private:
 
     const char* helpMessageImpl() const noexcept override;
 };
+
+class UserInterface;
+void RegisterCoreCommands(UserInterface& ui);
 }
 
 

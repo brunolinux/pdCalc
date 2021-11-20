@@ -12,8 +12,10 @@ DEFINES += BUILDING_UTILITIES
 HEADERS += \
     exception.h \
     observer.h \
-    publisher.h
+    publisher.h \
+    userinterface.h
 
 SOURCES += \
     observer.cpp \
-    publisher.cpp
+    publisher.cpp \
+    userinterface.cpp

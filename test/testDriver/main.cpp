@@ -8,6 +8,7 @@
 #include "../backendTest/corecommandstest.h"
 #include "../backendTest/commandrepositorytest.h"
 #include "../backendTest/commandmanagertest.h"
+#include "../backendTest/commanddispatchertest.h"
 
 using std::cout;
 using std::endl;
@@ -38,6 +39,10 @@ int main(int argc, char* argv[])
 
     CommandManagerTest cmt;
     passFail["CommandManagerTest"] = QTest::qExec(&cmt, args);
+
+    CommandDispatcherTest cdt;
+    passFail["CommandDispatcherTest"] = QTest::qExec(&cdt, args);
+
 
     cout << endl;
     int errors = 0;
