@@ -11,6 +11,7 @@ win32: DESTDIR = $$HOME/bin
 win32: DEFINES += _USE_MATH_DEFINES
 
 HEADERS += \
+    appobserver.h \
     command.h \
     commanddispatcher.h \
     commandmanager.h \
@@ -19,6 +20,7 @@ HEADERS += \
     stack.h
 
 SOURCES += \
+    appobserver.cpp \
     command.cpp \
     commanddispatcher.cpp \
     commandmanager.cpp \

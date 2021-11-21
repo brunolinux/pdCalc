@@ -13,9 +13,11 @@ HEADERS += \
     exception.h \
     observer.h \
     publisher.h \
+    tokenizer.h \
     userinterface.h
 
 SOURCES += \
     observer.cpp \
     publisher.cpp \
+    tokenizer.cpp \
     userinterface.cpp

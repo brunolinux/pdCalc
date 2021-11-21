@@ -11,10 +11,12 @@ QT -= gui core
 QT += testlib
 
 HEADERS += \
-    publisherobservertest.h
+    publisherobservertest.h \
+    tokenizertest.h
 
 SOURCES += \
-    publisherobservertest.cpp
+    publisherobservertest.cpp \
+    tokenizertest.cpp
 
 unix:LIBS += -L$$HOME/lib -lpdCalcUtilities
 win32:LIBS += -L$$HOME/bin -lpdCalcUtilities1

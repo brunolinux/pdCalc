@@ -9,6 +9,7 @@
 #include "../backendTest/commandrepositorytest.h"
 #include "../backendTest/commandmanagertest.h"
 #include "../backendTest/commanddispatchertest.h"
+#include "../utilitiesTest/tokenizertest.h"
 
 using std::cout;
 using std::endl;
@@ -43,6 +44,8 @@ int main(int argc, char* argv[])
     CommandDispatcherTest cdt;
     passFail["CommandDispatcherTest"] = QTest::qExec(&cdt, args);
 
+    TokenizerTest tt;
+    passFail["TokenizerTest"] = QTest::qExec(&tt, args);
 
     cout << endl;
     int errors = 0;
